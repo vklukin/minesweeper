@@ -1,0 +1,109 @@
+@import "colors";
+
+.field-game {
+  width: 16px;
+  height: 16px;
+
+  z-index: 500;
+  position: relative;
+
+  background-image: url("../images/sprite.png");
+  background-repeat: no-repeat;
+  background-position: 0 -51px;
+}
+
+.field-game.pressed-field {
+  background-position: -17px -51px;
+}
+
+//flag
+.flagged {background-position: -34px -51px;}
+
+//questions
+.question {
+  background-position: -51px -51px;
+
+  &-pressed {background-position: -68px -51px;}
+}
+
+//bombs
+.bomb {
+  background-position: -85px -51px;
+
+  &-died {background-position: -102px -51px;}
+
+  &-flagged {background-position: -119px -51px;}
+}
+
+//fields numbers
+.number {
+  &-one {background-position: 0 -68px;}
+
+  &-two {background-position: -17px -68px;}
+
+  &-three {background-position: -34px -68px;}
+
+  &-four {background-position: -51px -68px;}
+
+  &-five {background-position: -68px -68px;}
+
+  &-six {background-position: -85px -68px;}
+
+  &-seven {background-position: -102px -68px;}
+
+  &-eight {background-position: -119px -68px;}
+}
+
+//smile
+.smile {
+  width: 26px;
+  height: 26px;
+
+  background-image: url("../images/sprite.png");
+  background-repeat: no-repeat;
+  background-position: 0 -24px;
+
+  &-pressed {background-position: -27px -24px;}
+
+  &-field_pressed {background-position: -54px -24px;}
+
+  &-win {background-position: -81px -24px;}
+
+  &-died {background-position: -108px -24px;}
+}
+
+//bomb counter & timer
+.counter {
+  width: 13px;
+  height: 23px;
+
+  background-image: url("../images/sprite.png");
+  background-repeat: no-repeat;
+
+  &-one {background-position: 0 0;}
+
+  &-two {background-position: -14px 0;}
+
+  &-three {background-position: -28px 0;}
+
+  &-four {background-position: -42px 0;}
+
+  &-five {background-position: -56px 0;}
+
+  &-six {background-position: -70px 0;}
+
+  &-seven {background-position: -84px 0;}
+
+  &-eight {background-position: -98px 0;}
+
+  &-nine {background-position: -112px 0;}
+
+  &-zero {background-position: -126px 0;}
+}
+
+
+
+
+
+
+
