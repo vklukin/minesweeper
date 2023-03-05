@@ -16,6 +16,7 @@ function App() {
 
   const flags = new Set();
   const questions = new Set();
+  let prevValue = [];
 
   const [fields, setFields] = useState(() => CreateGame(size, 40));
   const [endGame, setEndGame] = useState(false);
@@ -111,18 +112,26 @@ function App() {
                     onContextMenu={(e) => {
                       e.preventDefault();
                       if (endGame) return;
+                      if (e.target.classList.contains("open")) return;
 
-                      if (questions.has(`field[${y}][${x}]`)) {
-                        questions.delete(`field[${y}][${x}]`);
+                      if (questions.has(`fields[${y}][${x}]`)) {
+                        questions.delete(`fields[${y}][${x}]`);
 
-                        // fields[y][x]
+                        fields[y][x] = prevValue[`fields[${y}][${x}]`];
+                        delete prevValue[`fields[${y}][${x}]`];
                         e.target.classList.value = "field-game";
                         return;
                       }
 
-                      if (flags.has(`field[${y}][${x}]`)) {
-                        flags.delete(`field[${y}][${x}]`);
-                        questions.add(`field[${y}][${x}]`);
+                      if (flags.has(`fields[${y}][${x}]`)) {
+                        flags.delete(`fields[${y}][${x}]`);
+                        CountFlags(flags, {
+                          First: counterFirstRef.current,
+                          Second: counterSecondRef.current,
+                          Third: counterThirdRef.current,
+                        });
+
+                        questions.add(`fields[${y}][${x}]`);
 
                         fields[y][x] = -4;
                         e.target.classList.value = "field-game question";
@@ -130,7 +139,9 @@ function App() {
                       }
 
                       if (flags.size !== 40) {
-                        flags.add(`field[${y}][${x}]`);
+                        flags.add(`fields[${y}][${x}]`);
+
+                        prevValue[`fields[${y}][${x}]`] = fields[y][x];
                         if (fields[y][x] === mine) {
                           fields[y][x] = -2;
                         }
@@ -152,6 +163,7 @@ function App() {
                       }
                       const val = OpenPlate(`${fields[y][x]}`);
                       e.target.classList.add(val);
+                      e.target.classList.add("open");
 
                       if (val === "bomb-died") {
                         if (fields[y][x] === -4) {
