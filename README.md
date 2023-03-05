@@ -46,3 +46,5 @@ plate = {
 ```
 
 2. To open adjacent cells, you can write a recursion that will check the adjacent cell by coordinates and check if it is empty. If it is empty, then open and run the recursion further to check the next cell
+
+3. I have not made the function of the first click is not mine. But I assumed that it could be done this way: If first click on the cell is mine, application will refresh game and auto opening the cell wich user clicked
