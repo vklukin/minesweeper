@@ -2,22 +2,20 @@ import { useEffect, useRef, useState } from "react";
 
 import { CreateGame } from "./controllers/CreateGame";
 import OpenPlate from "./controllers/OpenPlate";
-import { ClearTimer, RenderTimer } from "./controllers/RenderCounterPlates";
-
-export const Mask = {
-  TRANSPARENT: "field-game pressed-field",
-  FILL: "field-game",
-  FLAG: "field-game flagged",
-  QUESTION: "field-game question",
-  BOMB: "field-game bomb",
-  BOMB_DIED: "field-game bomb-died",
-  BOMB_FLAGGED: "field-game bomb-flagged",
-};
+import {
+  ClearFlags,
+  ClearTimer,
+  CountFlags,
+  RenderTimer,
+} from "./controllers/RenderCounterPlates";
 
 function App() {
   const mine = -1;
   const size = 16;
   let counter = 0;
+
+  const flags = new Set();
+  const questions = new Set();
 
   const [fields, setFields] = useState(() => CreateGame(size, 40));
   const [endGame, setEndGame] = useState(false);
@@ -54,13 +52,23 @@ function App() {
             ref={smileRef}
             onMouseDown={() => smileRef.current.classList.add("smile-pressed")}
             onMouseUp={() => smileRef.current.classList.remove("smile-pressed")}
-            onClick={(e) => {
+            onClick={() => {
               setFields([]);
-              setTimeout(() => setFields(() => CreateGame(size, 40)), 1);
+              setTimeout(() => {
+                setFields(() => CreateGame(size, 40));
+              }, 1);
 
               setEndGame(false);
               setStartTimer(false);
               window.clearInterval(window.intervalId);
+
+              flags.clear();
+              questions.clear();
+              ClearFlags({
+                counterFirstRef,
+                counterSecondRef,
+                counterThirdRef,
+              });
 
               counter = 0;
               ClearTimer({
@@ -85,7 +93,13 @@ function App() {
                 {fields.map((_, x) => (
                   <div
                     className={`field-game ${
-                      endGame && OpenPlate(fields[y][x])
+                      endGame &&
+                      (fields[y][x] === -1 ||
+                        fields[y][x] === -2 ||
+                        fields[y][x] === -3 ||
+                        fields[y][x] === -4)
+                        ? OpenPlate(`${fields[y][x]}`)
+                        : ""
                     }`}
                     key={x}
                     onMouseDown={() =>
@@ -94,12 +108,60 @@ function App() {
                     onMouseUp={() =>
                       smileRef.current.classList.remove("smile-field_pressed")
                     }
+                    onContextMenu={(e) => {
+                      e.preventDefault();
+                      if (endGame) return;
+
+                      if (questions.has(`field[${y}][${x}]`)) {
+                        questions.delete(`field[${y}][${x}]`);
+
+                        // fields[y][x]
+                        e.target.classList.value = "field-game";
+                        return;
+                      }
+
+                      if (flags.has(`field[${y}][${x}]`)) {
+                        flags.delete(`field[${y}][${x}]`);
+                        questions.add(`field[${y}][${x}]`);
+
+                        fields[y][x] = -4;
+                        e.target.classList.value = "field-game question";
+                        return;
+                      }
+
+                      if (flags.size !== 40) {
+                        flags.add(`field[${y}][${x}]`);
+                        if (fields[y][x] === mine) {
+                          fields[y][x] = -2;
+                        }
+                        e.target.classList.value = "field-game flagged";
+                        return CountFlags(flags, {
+                          First: counterFirstRef.current,
+                          Second: counterSecondRef.current,
+                          Third: counterThirdRef.current,
+                        });
+                      }
+                    }}
                     onClick={(e) => {
+                      if (e.target.classList.contains("flagged")) return;
+                      if (e.target.classList.contains("question")) return;
+                      if (endGame) return;
+
                       if (fields[y][x] === mine) {
                         fields[y][x] = -3;
                       }
-                      const val = OpenPlate(fields[y][x]);
+                      const val = OpenPlate(`${fields[y][x]}`);
                       e.target.classList.add(val);
+
+                      if (val === "bomb-died") {
+                        if (fields[y][x] === -4) {
+                          fields[y][x] = -5;
+                        }
+                        setEndGame(true);
+
+                        window.clearInterval(window.intervalId);
+                        smileRef.current.classList.add("smile-died");
+                      }
 
                       if (!startTimer) {
                         setStartTimer(true);
@@ -115,17 +177,11 @@ function App() {
                             });
                           }
                           RenderTimer(counter, {
-                            timerFirstRef,
-                            timerSecondRef,
-                            timerThirdRef,
+                            First: timerFirstRef.current,
+                            Second: timerSecondRef.current,
+                            Third: timerThirdRef.current,
                           });
                         }, 1000);
-                      }
-
-                      if (val === "bomb-died") {
-                        setEndGame(true);
-                        window.clearInterval(window.intervalId);
-                        smileRef.current.classList.add("smile-died");
                       }
                     }}
                   ></div>

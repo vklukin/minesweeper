@@ -2,36 +2,38 @@ export function RenderTimer(counter, obj) {
   let countes = counter.toString().split("");
 
   if (countes.length === 1) {
+    obj.Second.classList.value = "counter counter-zero";
+    obj.First.classList.value = "counter counter-zero";
     switch (countes[0]) {
       case "0":
-        obj.timerThirdRef.current.classList.value = "counter counter-zero";
+        obj.Third.classList.value = "counter counter-zero";
         break;
       case "1":
-        obj.timerThirdRef.current.classList.value = "counter counter-one";
+        obj.Third.classList.value = "counter counter-one";
         break;
       case "2":
-        obj.timerThirdRef.current.classList.value = "counter counter-two";
+        obj.Third.classList.value = "counter counter-two";
         break;
       case "3":
-        obj.timerThirdRef.current.classList.value = "counter counter-three";
+        obj.Third.classList.value = "counter counter-three";
         break;
       case "4":
-        obj.timerThirdRef.current.classList.value = "counter counter-four";
+        obj.Third.classList.value = "counter counter-four";
         break;
       case "5":
-        obj.timerThirdRef.current.classList.value = "counter counter-five";
+        obj.Third.classList.value = "counter counter-five";
         break;
       case "6":
-        obj.timerThirdRef.current.classList.value = "counter counter-six";
+        obj.Third.classList.value = "counter counter-six";
         break;
       case "7":
-        obj.timerThirdRef.current.classList.value = "counter counter-seven";
+        obj.Third.classList.value = "counter counter-seven";
         break;
       case "8":
-        obj.timerThirdRef.current.classList.value = "counter counter-eight";
+        obj.Third.classList.value = "counter counter-eight";
         break;
       case "9":
-        obj.timerThirdRef.current.classList.value = "counter counter-nine";
+        obj.Third.classList.value = "counter counter-nine";
         break;
     }
   }
@@ -39,67 +41,67 @@ export function RenderTimer(counter, obj) {
   if (countes.length === 2) {
     switch (countes[0]) {
       case "0":
-        obj.timerSecondRef.current.classList.value = "counter counter-zero";
+        obj.Second.classList.value = "counter counter-zero";
         break;
       case "1":
-        obj.timerSecondRef.current.classList.value = "counter counter-one";
+        obj.Second.classList.value = "counter counter-one";
         break;
       case "2":
-        obj.timerSecondRef.current.classList.value = "counter counter-two";
+        obj.Second.classList.value = "counter counter-two";
         break;
       case "3":
-        obj.timerSecondRef.current.classList.value = "counter counter-three";
+        obj.Second.classList.value = "counter counter-three";
         break;
       case "4":
-        obj.timerSecondRef.current.classList.value = "counter counter-four";
+        obj.Second.classList.value = "counter counter-four";
         break;
       case "5":
-        obj.timerSecondRef.current.classList.value = "counter counter-five";
+        obj.Second.classList.value = "counter counter-five";
         break;
       case "6":
-        obj.timerSecondRef.current.classList.value = "counter counter-six";
+        obj.Second.classList.value = "counter counter-six";
         break;
       case "7":
-        obj.timerSecondRef.current.classList.value = "counter counter-seven";
+        obj.Second.classList.value = "counter counter-seven";
         break;
       case "8":
-        obj.timerSecondRef.current.classList.value = "counter counter-eight";
+        obj.Second.classList.value = "counter counter-eight";
         break;
       case "9":
-        obj.timerSecondRef.current.classList.value = "counter counter-nine";
+        obj.Second.classList.value = "counter counter-nine";
         break;
     }
 
     switch (countes[1]) {
       case "0":
-        obj.timerThirdRef.current.classList.value = "counter counter-zero";
+        obj.Third.classList.value = "counter counter-zero";
         break;
       case "1":
-        obj.timerThirdRef.current.classList.value = "counter counter-one";
+        obj.Third.classList.value = "counter counter-one";
         break;
       case "2":
-        obj.timerThirdRef.current.classList.value = "counter counter-two";
+        obj.Third.classList.value = "counter counter-two";
         break;
       case "3":
-        obj.timerThirdRef.current.classList.value = "counter counter-three";
+        obj.Third.classList.value = "counter counter-three";
         break;
       case "4":
-        obj.timerThirdRef.current.classList.value = "counter counter-four";
+        obj.Third.classList.value = "counter counter-four";
         break;
       case "5":
-        obj.timerThirdRef.current.classList.value = "counter counter-five";
+        obj.Third.classList.value = "counter counter-five";
         break;
       case "6":
-        obj.timerThirdRef.current.classList.value = "counter counter-six";
+        obj.Third.classList.value = "counter counter-six";
         break;
       case "7":
-        obj.timerThirdRef.current.classList.value = "counter counter-seven";
+        obj.Third.classList.value = "counter counter-seven";
         break;
       case "8":
-        obj.timerThirdRef.current.classList.value = "counter counter-eight";
+        obj.Third.classList.value = "counter counter-eight";
         break;
       case "9":
-        obj.timerThirdRef.current.classList.value = "counter counter-nine";
+        obj.Third.classList.value = "counter counter-nine";
         break;
     }
   }
@@ -107,100 +109,100 @@ export function RenderTimer(counter, obj) {
   if (countes.length === 3) {
     switch (countes[0]) {
       case "0":
-        obj.timerFirstRef.current.classList.value = "counter counter-zero";
+        obj.First.classList.value = "counter counter-zero";
         break;
       case "1":
-        obj.timerFirstRef.current.classList.value = "counter counter-one";
+        obj.First.classList.value = "counter counter-one";
         break;
       case "2":
-        obj.timerFirstRef.current.classList.value = "counter counter-two";
+        obj.First.classList.value = "counter counter-two";
         break;
       case "3":
-        obj.timerFirstRef.current.classList.value = "counter counter-three";
+        obj.First.classList.value = "counter counter-three";
         break;
       case "4":
-        obj.timerFirstRef.current.classList.value = "counter counter-four";
+        obj.First.classList.value = "counter counter-four";
         break;
       case "5":
-        obj.timerFirstRef.current.classList.value = "counter counter-five";
+        obj.First.classList.value = "counter counter-five";
         break;
       case "6":
-        obj.timerFirstRef.current.classList.value = "counter counter-six";
+        obj.First.classList.value = "counter counter-six";
         break;
       case "7":
-        obj.timerFirstRef.current.classList.value = "counter counter-seven";
+        obj.First.classList.value = "counter counter-seven";
         break;
       case "8":
-        obj.timerFirstRef.current.classList.value = "counter counter-eight";
+        obj.First.classList.value = "counter counter-eight";
         break;
       case "9":
-        obj.timerFirstRef.current.classList.value = "counter counter-nine";
+        obj.First.classList.value = "counter counter-nine";
         break;
     }
 
     switch (countes[1]) {
       case "0":
-        obj.timerSecondRef.current.classList.value = "counter counter-zero";
+        obj.Second.classList.value = "counter counter-zero";
         break;
       case "1":
-        obj.timerSecondRef.current.classList.value = "counter counter-one";
+        obj.Second.classList.value = "counter counter-one";
         break;
       case "2":
-        obj.timerSecondRef.current.classList.value = "counter counter-two";
+        obj.Second.classList.value = "counter counter-two";
         break;
       case "3":
-        obj.timerSecondRef.current.classList.value = "counter counter-three";
+        obj.Second.classList.value = "counter counter-three";
         break;
       case "4":
-        obj.timerSecondRef.current.classList.value = "counter counter-four";
+        obj.Second.classList.value = "counter counter-four";
         break;
       case "5":
-        obj.timerSecondRef.current.classList.value = "counter counter-five";
+        obj.Second.classList.value = "counter counter-five";
         break;
       case "6":
-        obj.timerSecondRef.current.classList.value = "counter counter-six";
+        obj.Second.classList.value = "counter counter-six";
         break;
       case "7":
-        obj.timerSecondRef.current.classList.value = "counter counter-seven";
+        obj.Second.classList.value = "counter counter-seven";
         break;
       case "8":
-        obj.timerSecondRef.current.classList.value = "counter counter-eight";
+        obj.Second.classList.value = "counter counter-eight";
         break;
       case "9":
-        obj.timerSecondRef.current.classList.value = "counter counter-nine";
+        obj.Second.classList.value = "counter counter-nine";
         break;
     }
 
     switch (countes[2]) {
       case "0":
-        obj.timerThirdRef.current.classList.value = "counter counter-zero";
+        obj.Third.classList.value = "counter counter-zero";
         break;
       case "1":
-        obj.timerThirdRef.current.classList.value = "counter counter-one";
+        obj.Third.classList.value = "counter counter-one";
         break;
       case "2":
-        obj.timerThirdRef.current.classList.value = "counter counter-two";
+        obj.Third.classList.value = "counter counter-two";
         break;
       case "3":
-        obj.timerThirdRef.current.classList.value = "counter counter-three";
+        obj.Third.classList.value = "counter counter-three";
         break;
       case "4":
-        obj.timerThirdRef.current.classList.value = "counter counter-four";
+        obj.Third.classList.value = "counter counter-four";
         break;
       case "5":
-        obj.timerThirdRef.current.classList.value = "counter counter-five";
+        obj.Third.classList.value = "counter counter-five";
         break;
       case "6":
-        obj.timerThirdRef.current.classList.value = "counter counter-six";
+        obj.Third.classList.value = "counter counter-six";
         break;
       case "7":
-        obj.timerThirdRef.current.classList.value = "counter counter-seven";
+        obj.Third.classList.value = "counter counter-seven";
         break;
       case "8":
-        obj.timerThirdRef.current.classList.value = "counter counter-eight";
+        obj.Third.classList.value = "counter counter-eight";
         break;
       case "9":
-        obj.timerThirdRef.current.classList.value = "counter counter-nine";
+        obj.Third.classList.value = "counter counter-nine";
         break;
     }
   }
@@ -210,4 +212,19 @@ export const ClearTimer = (obj) => {
   obj.timerFirstRef.current.classList.value = "counter counter-zero";
   obj.timerSecondRef.current.classList.value = "counter counter-zero";
   obj.timerThirdRef.current.classList.value = "counter counter-zero";
+};
+
+export const CountFlags = (arr, obj) => {
+  let counter = 40;
+  let arrLength = arr.size;
+
+  counter = counter - arrLength;
+
+  RenderTimer(counter, obj);
+};
+
+export const ClearFlags = (obj) => {
+  obj.counterFirstRef.current.classList.value = "counter counter-zero";
+  obj.counterSecondRef.current.classList.value = "counter counter-four";
+  obj.counterThirdRef.current.classList.value = "counter counter-zero";
 };
